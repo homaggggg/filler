@@ -1,0 +1,121 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} Register {% endblock %} 
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} register-page {% endblock body_class %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+{#  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">#}
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/css/register.css">
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="register-box">
+
+    <div class="login-logo">
+         <a target="_blank" rel="noopener noreferrer" class="a-color"
+           href="#"><b>Генератор</b></a>
+    </div>    
+
+    <div class="card">
+      <div class="card-body register-card-body a-color">
+        <p class="login-box-msg">
+            {% if msg %}
+                <span class="text-danger">{{ msg | safe }}</span>
+            {% else %}
+            <span>
+                Регистрация
+            </span>
+            {% endif %}            
+        </p>
+
+        <form role="form" method="post" action="">
+
+          {% csrf_token %}
+
+          <div class="input-group mb-3">
+            {{ form.username }}
+            <div class="input-group-append">
+              <div class="input-group-text fa-bg">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <span class="text-error">{{ form.username.errors }}</span>
+          
+          <div class="input-group mb-3">
+            {{ form.email }}
+            <div class="input-group-append">
+              <div class="input-group-text fa-bg">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <span class="text-error">{{ form.email.errors }}</span>
+
+          <div class="input-group mb-3">
+            {{ form.password1 }}
+            <div class="input-group-append">
+              <div class="input-group-text fa-bg">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <span class="text-error">{{ form.password1.errors }}</span>
+
+          <div class="input-group mb-3">
+            {{ form.password2 }}
+            <div class="input-group-append">
+              <div class="input-group-text fa-bg">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <span class="text-error">{{ form.password2.errors }}</span>
+          
+          <div class="">
+            <!-- /.col -->
+            <div class="">
+              <button type="submit" name="register" class="btn btn-block btn-r">Записать</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+
+        <br />
+        <div class="text-center">
+            Есть учетная запись? <a href="{% url 'login' %}" class="text-center">Войти</a>
+            <br />
+            <br />
+             &copy; 2023 ИНОЦ
+        </div>
+
+      </div>
+      <!-- /.form-box -->
+    </div><!-- /.card -->
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <!-- jQuery -->
+  <script src="{{ ASSETS_ROOT }}/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{{ ASSETS_ROOT }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+{% endblock javascripts %}
+

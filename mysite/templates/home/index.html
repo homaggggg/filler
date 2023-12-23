@@ -1,0 +1,131 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Profile {% endblock %} 
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} sidebar-mini {% endblock body_class %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+{#  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">#}
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/css/index.css">
+
+{% endblock stylesheets %}
+
+{% block content %}  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper index-bg">
+    <!-- Content Header (Page header) -->
+    <section class="content-header nav-text-color">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Профиль</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item active text-info">Профиль</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content nav-text-color">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="card card-primary card-outline card-height navbar-main border-color card-bg">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle border-ava"
+                       src="{{ ASSETS_ROOT }}/img/user2-160x160.jpg"
+                       alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center a-text">
+                  {{ request.user.username }}
+                </h3>
+
+                <p class="text-center text-info">
+                  {{ request.user.email }}
+                </p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item card-bg">
+                    <b>Ваших файлов</b> <a class="float-right text-info">{{ gurnals_count }}</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            <!-- About Me Box -->
+            
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div class="card card-height card-bg">
+              <div class="card-body d-flex justify-content-center align-items-center">
+                <div class="container-fluid row">
+                  
+                      <table class="table table-striped table-bordered text-color">
+                          <tr>
+                              <th class="w-25">{{col1name}}</th> <th class="w-25">{{col2name}}</th>
+                              <th colspan="1">Сервисы</th>
+      
+                          </tr>
+      
+                          {% for item in gurnal_list %}
+                          <tr>
+                              <td><h5 class="card-title">{{ item.created_at }}</h5></td>  <td><h5 class="card-title">{{ item.updated_at }}</h5></td>  
+                              <td>
+                                  <button class="btn btn-r btn-sm">
+                                      <a class="text-color" href="{% url 'docgurnal:gurnalDownload'%}?id={{ item.pk }}">Скачать</a>
+                                  </button>
+                              </td>  
+                          </tr>
+                          {% endfor %}
+                      </table>
+      
+              </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <!-- jQuery -->
+  <script src="{{ ASSETS_ROOT }}/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{{ ASSETS_ROOT }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="{{ ASSETS_ROOT }}/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="{{ ASSETS_ROOT }}/js/demo.js"></script>
+
+{% endblock javascripts %}  

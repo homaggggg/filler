@@ -1,0 +1,65 @@
+{% extends 'docgurnal/base.html' %}
+{% load docgurnal_tags %}
+{% block content %}
+
+
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper index-bg text-color">
+        <!-- Content Header (Page header) -->
+    {% block sidebar %}
+        {% include 'docgurnal/includes/_breadcrumb.html' %}
+    {% endblock %}
+
+        <!-- Main content -->
+        <section class="content">
+
+            <a href="{% url 'docgurnal:gurnal' %}" class="btn btn-r float-right mb-4">
+                {% my_comeback %}</a>
+
+
+            <div class="col-md-10">
+
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">Наименование</th>
+                        <th scope="col">Значение</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for name, value in gurnal_one.get_fields %}
+                        {% if name in slovar %}
+                            <tr>
+                                <td>
+                                    {% field_name gurnal_one name %}
+                                </td>
+                                <td>
+                                    {{ value |  nonefortext }}
+                                </td>
+                            </tr>
+                        {% endif %}
+                     {% if name in secslovar %}
+                            <tr>
+                                <td>
+                                    {% field_name gurnal_one name %}
+                                </td>
+                                <td>
+                                    {{ value |  nonefortext }}
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{% endblock content %}

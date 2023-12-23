@@ -1,0 +1,75 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-bg ">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link text-center text-info">
+        <span class="brand-text font-weight-light">Генератор</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center align-items-center">
+            <div class="info pr-3">
+                <a href="/" class="btn btn-r text-color">
+                    Аккаунт
+                </a>
+            </div>
+
+            <div class="info pl-3">
+                <a href="{% url 'logout' %}" class="btn btn-r text-color">
+                    Выйти
+                </a>
+            </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+        <div class="form-inline d-none">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+
+
+
+                {% for item1 in SIDEBAR %}
+                    <li class="nav-item {% if 'children' in item1 %} has-treeview menu-is-opening menu-open {% endif %}">
+                    <a href="{% if 'children' in item1 %}#{% else %}{{ item1.url }}{% endif %}" class="nav-link text-color">
+                        <i class="nav-icon fas fa-circle {{ item1.color }}"></i>
+                        <p>
+                            {{ item1.name }}
+                            {% if 'children' in item1 %}<i class="right fas fa-angle-left"></i>{% endif %}
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                    {% if 'children' in item1 %}
+                        {% for item2 in item1.children %}
+                            <li class="nav-item">
+                                <a href="{{ item2.url }}" class="nav-link text-color">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{ item2.name }}</p>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                    </ul>
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
+  

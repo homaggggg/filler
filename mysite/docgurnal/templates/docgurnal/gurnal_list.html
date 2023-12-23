@@ -1,0 +1,72 @@
+{% extends "docgurnal/base.html" %}
+
+{#{% block page_heading %}{% endblock %}#}
+{% block title %}{{ sometry }} {% endblock %}
+
+{% block content %}
+
+{% load docgurnal_tags %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper index-bg text-color border-bg">
+
+    <!-- Content Header (Page header) -->
+    {% block sidebar %}
+    {% include 'docgurnal/includes/_breadcrumb.html' %}
+    {% endblock %}
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <button class="btn btn-r btn-sm">
+            <a href="{% url 'docgurnal:gurnalCreate' %}" class='text-color'>
+                Добавить новый
+            </a>
+        </button>
+        <br><br>
+
+        <div class="container-fluid row">
+            <div class="col-md-12">
+                <table class="table table-striped table-bordered text-color">
+                    <tr>
+                        <th class="w-25">{{col1name}}</th> <th class="w-25">{{col6name}}</th> <th class="w-25">{{col10name}}</th> <th class="w-25">{{col11name}}</th> 
+                        <th colspan="4">Скачивание</th>
+
+                    </tr>
+
+                    {% for item in gurnal_list %}
+                    <tr>
+                        <td><h5 class="card-title">{{ item.fiostud }}</h5></td>  <td><h5 class="card-title">{{ item.vidpract }}</h5></td>  <td><h5 class="card-title">{{ item.datasdacha }}</h5></td>  <td><h5 class="card-title">{{ item.datakonec }}</h5></td>
+                        <td>
+                            <button class="btn btn-r btn-sm">
+                                <a class="text-color" href="{% url 'docgurnal:gurnalDownload'%}?id={{ item.pk }}">Скачать</a>
+                            </button>
+                        </td>  
+                        <td>
+                            <button class="btn btn-r btn-sm">
+                                <a class="text-color" href="{% url 'docgurnal:gurnalUpdate' item.pk %}">Редактировать</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-r btn-sm">
+                                <a class="text-color" href="{% url 'docgurnal:gurnalDetail' item.pk %}">Подробнее</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-r btn-sm" >
+                                <a class="text-color" href="{% url 'docgurnal:gurnalDelete' item.pk %}">Удалить</a>
+                            </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+{% endblock %}

@@ -1,0 +1,712 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+        <img src="{{ ASSETS_ROOT }}/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+             style="opacity: .8">
+        <span class="brand-text font-weight-light">АРМ</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="{{ ASSETS_ROOT }}/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="{% url 'logout' %}" class="d-block">
+                    {{ request.user.username }} - Выйти
+                </a>
+            </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+        <div class="form-inline d-none">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+                <li class="nav-item">
+                    <a href="/" class="nav-link {% if 'index.html' in segment %} active {% endif %}">
+                        <i class="far fa-circle nav-icon text-danger"></i>
+                        <p>Главная</p>
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a href="/todo/" class="nav-link {% if 'todo' in segment %} active {% endif %}">
+                        <i class="nav-icon fas fa-tachometer-alt text-warning"></i>
+                        <p>Заявки</p>
+                    </a>
+                </li>
+
+
+                {#                <li class="nav-header">АРМы</li>#}
+
+                <li class="nav-header">АРМы</li>
+                {# АРМ ЭДИ К#}
+                <li class="nav-item has-treeview ">
+                    <a href="#" class="nav-link ">
+                        <i class="nav-icon fas fa-cubes text-info"></i>
+                        <p>
+                            АРМ ЭДИ К
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/edikon/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Рабочий стол</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Сервисы
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ CORE_DIR }}/edikon/typeizdel/" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Шаблоны</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ CORE_DIR }}/edikon/finalizdelie/" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Изделия</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ CORE_DIR }}/edikon/finalizdelie/" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Поставки</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+                {# АРМ ЭДИ Э#}
+                <li class="nav-item has-treeview ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-cogs text-info"></i>
+                        <p>
+                            АРМ ЭДИ Э
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/edieks/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Рабочий стол</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Бизнес-процессы
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/ui-bp-timeline.html"
+                                       class="nav-link {% if 'ui-bp-timeline.html' in segment %} active {% endif %}">
+                                        <i class="nav-icon fas fa-copy text-info"></i>
+                                        <p>БП Устранение отказа</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Level 2</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {# АРМ ЭДИ Т#}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-microchip text-info"></i>
+                        <p>
+                            АРМ ЭДИ Т
+
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/editeh/" class="nav-link">
+                                <i class="far fa-circle nav-icon text-info"></i>
+                                <p>Рабочий стол</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Level 2
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Level 2</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {# АРМ ЭДИ П#}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie text-info"></i>
+                        <p>
+                            АРМ ЭДИ П
+
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/edipro/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Рабочий стол</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Level 2
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Level 2</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {# АРМ ЭКБ#}
+                <li class="nav-item has-treeview menu-is-opening menu-open">
+                    <a href="#" class="nav-link">
+                        {#                        <i class="nav-icon fas fa-circle text-orange"></i>#}
+                        <i class="nav-icon fas fa-podcast text-orange"></i>
+                        <p>
+                            АРМ ЭКБ
+
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview menu-open">
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/armekb/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Рабочий стол</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/armekb/elproject/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Проекты</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/armekb/truesolvar/partial/1/1/vse/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Словарь</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/armekb/import_csv/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Загрузка снимка</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Настройки
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'armekb:GrupEKb' %}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Группы компонентов</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'armekb:TrueColor' %}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Цвета в словаре</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'armekb:EKbMadeIn' %}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Место производства</p>
+                                    </a>
+                                </li>
+                                                                <li class="nav-item">
+                                    <a href="{% url 'armekb:StatusComp' %}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Статус компонента</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+                {# АРМ Кат#}
+                <li class="nav-item has-treeview ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-folder text-success"></i>
+                        <p>
+                            АРМ Кат
+
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/hdbook/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Рабочий стол</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/hdbook/approvednames/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Утв. наименования</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/hdbook/ekpsgroup/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ЕКПС группы</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/hdbook/ekpsclass/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ЕКПС классы</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/hdbook/unstandardcodes/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Коды ООН</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/hdbook/producttypes/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Типы изделия</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/hdbook/rproductmodels/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Модели изделия</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/hdbook/productparttypes/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Каталоги</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/hdbook/itemizes/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Составы</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/hdbook/maingallery/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Главные фото</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/hdbook/spareparts/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Предметы снабжения</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{% url 'hdbook:Nomenclature' %}" class="nav-link">
+
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Наполнение категорий</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                {# Справочники#}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-book text-warning"></i>
+                        <p>
+                            Справочники
+
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ CORE_DIR }}/handbook/" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Рабочий стол</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Level 2
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Level 2</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {# АРМ ЭДИ Экз#}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-car text-warning"></i>
+                        <p>
+                            АРМ ЭДИ Экз
+
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Level 2</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Level 2
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Level 2</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+ {# АРМ Т#}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-cube text-primary"></i>
+                        <p>
+                            АРМ Т
+
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Level 2</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Level 2
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Level 2</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+             {# АРМ Ц#}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-gamepad text-primary"></i>
+                        <p>
+                            АРМ Цех
+
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Level 2</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Level 2
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Level 2</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                         {# АРМ CG#}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-wrench text-primary"></i>
+                        <p>
+                            АРМ СП
+
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Level 2</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Level 2
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Level 3</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Level 2</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
+  

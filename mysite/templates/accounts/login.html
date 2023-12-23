@@ -1,0 +1,97 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} Login {% endblock %} 
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} login-page {% endblock body_class %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+{#  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> #}
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/css/login.css">
+
+{% endblock stylesheets %}
+{% block content %}
+
+  <div class="login-box">
+
+    <div class="login-logo">
+        <a target="_blank" rel="noopener noreferrer" class="a-color"
+           href="#"><b>Генератор</b></a>
+    </div>
+
+    <!-- /.login-logo -->
+    <div class="card mt-5">
+      <div class="card-body login-card-body a-color">
+
+            <p class="login-box-msg text-danger">
+            {% if msg %}
+                {{ msg | safe }}
+            {% else %}
+                Введите Ваши учетные данные
+            {% endif %}
+        </p>
+
+        <form method="post" action="">
+
+          {% csrf_token %}
+
+          <div class="input-group mb-3">
+            {{ form.username }}
+            <div class="input-group-append">
+              <div class="input-group-text fa-bg">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            {{ form.password }}
+            <div class="input-group-append">
+              <div class="input-group-text fa-bg">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+            <!-- /.col -->
+            <div class="">
+              <button type="submit" name="login" class="btn btn-r btn-block">Вход</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+        <div class="text-center a-color pb-4">
+            Нет учетной записи? <a href="{% url 'register' %}" class="text-center">Регистрация</a>
+            <br />
+            <br />
+{#            &copy; ColorLib #}
+{#            <a target="_blank" rel="noopener noreferrer"#}
+{#               href="https://appseed.us/admin-dashboards/django-dashboard-adminlte"><b>Admin</b>LTE</a> #}
+{#            - coded by <a target="_blank" rel="noopener noreferrer" href="https://appseed.us">AppSeed</a>.#}
+            &copy; 2023 ИНОЦ
+
+        </div>
+
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+
+  </div>
+
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <!-- jQuery -->
+  <script src="{{ ASSETS_ROOT }}/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{{ ASSETS_ROOT }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+{% endblock javascripts %}

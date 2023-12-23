@@ -1,0 +1,25 @@
+{% extends 'docgurnal/base.html' %}
+{% load docgurnal_tags %}
+{% block content %}
+
+<div class="content-wrapper d-flex justify-content-center align-items-center index-bg text-color">
+    <!-- Content Header (Page header) -->
+{% block sidebar %}
+{% include 'docgurnal/includes/_breadcrumb.html' %}
+{% endblock %}
+
+<section class="content d-flex flex-column text-center justify-content-center align-items-center card-bg p-5">
+    <div class="confirm-delete-div a-text">
+        <h2>Удаление</h2>
+        <p>Вы точно хотите удалить?</p>
+        <form method="post">
+            {% csrf_token %}
+            <p class="a-text-danger text-bold"> Удаляется обьект:  "{{ object }}"</p>
+            <button type="submit" class="btn btn-r ">Удалить</button>
+            <a href="{% url 'docgurnal:gurnal' %}" class="btn btn-r">Выйти</a>
+        </form>
+    </div>
+</section>
+</div>
+
+{% endblock %}
